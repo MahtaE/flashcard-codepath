@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Flashcard</string>
+    <string name = "flashcard">flash card</string>
+    <string name = "quest">Who is the 44th President of the United States?</string>
+    <string name="george_h_w_bush">George H. W. Bush</string>
+    <string name="who_is_the_4th_president_of_the_united_states">WHO IS THE 4TH PRESIDENT OF THE UNITED STATES?</string>
+    <string name="bill_clinton">Bill Clinton</string>
+    <string name="correct_answer">Barack Obama</string>
+
+</resources>
