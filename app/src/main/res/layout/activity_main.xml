@@ -50,4 +50,10 @@
         android:background="@android:color/transparent"
         app:srcCompat="@drawable/ic_add_circle" />
 
+    <EditText
+        android:id="@+id/et_simple"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+    </EditText>
+
 </RelativeLayout>
