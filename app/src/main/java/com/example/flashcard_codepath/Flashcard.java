@@ -13,13 +13,6 @@ import java.util.UUID;
 @Entity
 public class Flashcard {
 
-    @Ignore
-    Flashcard(String question, String answer) {
-        this.uuid = UUID.randomUUID().toString();
-        this.question = question;
-        this.answer = answer;
-    }
-
     Flashcard(String question, String answer, String wrongAnswer1, String wrongAnswer2) {
         this.uuid = UUID.randomUUID().toString();
         this.question = question;

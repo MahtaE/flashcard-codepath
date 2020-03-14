@@ -35,6 +35,28 @@
         android:layout_margin= "20dp"
         android:hint= "Enter the Question Here"
         android:inputType="textMultiLine"/>
+
+    <EditText
+        android:id="@+id/editTextOptionOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/editTextAnswer"
+        android:layout_margin="20dp"
+        android:hint="Enter Option 1 Here"
+        android:inputType="textMultiLine"
+        android:padding="16dp" />
+
+    <EditText
+        android:id="@+id/editTextOptionTwo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextOptionOne"
+        android:layout_margin="20dp"
+        android:hint="Enter Option 2 Here"
+        android:inputType="textMultiLine"
+        android:padding="16dp" />
+
     <EditText
         android:id="@+id/editTextAnswer"
         android:layout_width="match_parent"
@@ -45,4 +67,5 @@
         android:hint="Enter the Answer Here"
         android:inputType="textMultiLine"
         android:layout_below="@id/editTextQuestion"/>
+
 </RelativeLayout>

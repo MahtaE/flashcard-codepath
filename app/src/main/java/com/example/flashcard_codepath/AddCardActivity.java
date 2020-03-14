@@ -29,9 +29,13 @@ public class AddCardActivity extends AppCompatActivity {
                 // Get data from edit texts
                 String newQuestion = ((EditText)findViewById(R.id.editTextQuestion)).getText().toString();
                 String newAnswer = ((EditText)findViewById(R.id.editTextAnswer)).getText().toString();
+                String newOptionOne = ((EditText)findViewById(R.id.editTextOptionOne)).getText().toString();
+                String newOptionTwo = ((EditText)findViewById(R.id.editTextOptionTwo)).getText().toString();
                 Intent data = new Intent();
                 data.putExtra("question", newQuestion);
                 data.putExtra("answer", newAnswer);
+                data.putExtra("optionOne", newOptionOne);
+                data.putExtra("optionTwo", newOptionTwo);
                 setResult(RESULT_OK, data);
                 finish();
             }
