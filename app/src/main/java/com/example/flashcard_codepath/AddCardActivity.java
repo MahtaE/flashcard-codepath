@@ -24,6 +24,8 @@ public class AddCardActivity extends AppCompatActivity {
         findViewById(R.id.saveImageButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                flashcardDatabase = new FlashcardDatabase(getApplicationContext());
                 // Get data from edit texts
                 String newQuestion = ((EditText)findViewById(R.id.editTextQuestion)).getText().toString();
                 String newAnswer = ((EditText)findViewById(R.id.editTextAnswer)).getText().toString();
@@ -35,6 +37,6 @@ public class AddCardActivity extends AppCompatActivity {
             }
         });
 
-
     }
+    FlashcardDatabase flashcardDatabase;
 }
