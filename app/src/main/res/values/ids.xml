@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="flashcard_question" type="id" />
+    <item name="nextCardButton" type="id" />
+    <item name="timer" type="id" />
+</resources>
