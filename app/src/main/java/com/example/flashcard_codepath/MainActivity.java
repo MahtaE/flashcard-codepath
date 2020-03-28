@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.plattysoft.leonids.ParticleSystem;
+
 import java.util.List;
 import java.util.Random;
 
@@ -111,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onAnimationStart(Animation animation) {
                         // this method is called when the animation first starts
                         findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
-                        findViewById(R.id.flashcard_question).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
                     }
 
                     @Override
@@ -119,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
                         // this method is called when the animation is finished playing
                         ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
                         ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
-                        findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
                         findViewById(R.id.flashcard_question).startAnimation(rightInAnim);
                     }
 
@@ -167,6 +168,10 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         resetState();
                         ((Button) findViewById(R.id.ans3)).setTextColor(getResources().getColor(R.color.correctAns));
+                        new ParticleSystem(MainActivity.this, 100, R.drawable.cofetti, 3000)
+                                .setSpeedRange(0.2f, 0.5f)
+                                .oneShot(findViewById(R.id.ans3), 100);
+
                     }
                 });
                 findViewById(R.id.addImageButton).setOnClickListener(new View.OnClickListener() {
@@ -230,6 +235,9 @@ public class MainActivity extends AppCompatActivity {
             String newOptionOne = data.getStringExtra("optionOne");
             String newOptionTwo = data.getStringExtra("optionTwo");
             ((TextView) findViewById(R.id.flashcard_question)).setText(newQuestion);
+            ((TextView) findViewById(R.id.flashcard_answer)).setText(newAnswer);
+            findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
+            findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
             ((Button) findViewById(R.id.ans1)).setText(newOptionOne);
             ((Button) findViewById(R.id.ans2)).setText(newOptionTwo);
             ((Button) findViewById(R.id.ans3)).setText(newAnswer);
