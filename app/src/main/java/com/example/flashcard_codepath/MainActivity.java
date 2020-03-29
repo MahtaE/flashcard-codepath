@@ -58,30 +58,31 @@ public class MainActivity extends AppCompatActivity {
             //show the flashcard answer and hide the flashcard question
             @Override
             public void onClick(View v) {
-                findViewById(R.id.flashcard_answer).setVisibility(View.VISIBLE);
-                findViewById(R.id.flashcard_question).setVisibility(View.INVISIBLE);
-                View answerSideView = findViewById(R.id.flashcard_answer);
 
-                // get the center for the clipping circle
-                int cx = answerSideView.getWidth() / 2;
-                int cy = answerSideView.getHeight() / 2;
-
-//              get the final radius for the clipping circle
-                float finalRadius = (float) Math.hypot(cx, cy);
-
-//              create the animator for this view (the start radius is zero)
-                Animator anim = ViewAnimationUtils.createCircularReveal(answerSideView, cx, cy, 0f, finalRadius);
+//                View answerSideView = findViewById(R.id.flashcard_answer);
+//
+//                // get the center for the clipping circle
+//                int cx = answerSideView.getWidth() / 2;
+//                int cy = answerSideView.getHeight() / 2;
+//
+////              get the final radius for the clipping circle
+//                float finalRadius = (float) Math.hypot(cx, cy);
+//
+////              create the animator for this view (the start radius is zero)
+//                Animator anim = ViewAnimationUtils.createCircularReveal(answerSideView, cx, cy, 0f, finalRadius);
 
 //              hide the question and show the answer to prepare for playing the animation!
                 final View questionSideView = findViewById(R.id.flashcard_question);
-                questionSideView.animate()
+                //questionSideView.animate()
+                findViewById(R.id.flashcard_question).animate()
                         .rotationY(90)
                         .setDuration(200)
                         .withEndAction(
                                 new Runnable() {
                                     @Override
                                     public void run() {
-                                        questionSideView.setVisibility(View.INVISIBLE);
+                                        findViewById(R.id.flashcard_question).setVisibility(View.INVISIBLE);
+                                        findViewById(R.id.flashcard_question).setRotationY(0);
                                         findViewById(R.id.flashcard_answer).setVisibility(View.VISIBLE);
                                         // second quarter turn
                                         findViewById(R.id.flashcard_answer).setRotationY(-90);
@@ -92,14 +93,10 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 }
                         ).start();
-                questionSideView.setVisibility(View.INVISIBLE);
-                answerSideView.setVisibility(View.VISIBLE);
-
-                anim.setDuration(3000);
-                anim.start();
+                //anim.setDuration(300)
+                //anim.start();
             }
         });
-
         findViewById(R.id.nextCardButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
                         ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
                         ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
                         findViewById(R.id.flashcard_question).startAnimation(rightInAnim);
+                        showNextCard();
                     }
 
                     @Override
@@ -182,14 +180,6 @@ public class MainActivity extends AppCompatActivity {
                         overridePendingTransition(R.anim.right_in, R.anim.left_out);
                     }
                 });
-
-                findViewById(R.id.nextCardButton).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showNextCard();
-                    }
-                });
-
             }
         });
     }
@@ -206,10 +196,12 @@ public class MainActivity extends AppCompatActivity {
         // make sure we don't get an IndexOutOfBoundsError if we are viewing the last indexed card in our list
         if (currentCardDisplayedIndex > allFlashcards.size() - 1) {
             currentCardDisplayedIndex = 0;
+
         }
 
         // set the question and answer TextViews with data from the database
         ((TextView) findViewById(R.id.flashcard_question)).setText(allFlashcards.get(currentCardDisplayedIndex).getQuestion());
+        ((TextView) findViewById(R.id.flashcard_answer)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
         ((Button) findViewById(R.id.ans1)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer1());
         ((Button) findViewById(R.id.ans2)).setText(allFlashcards.get(currentCardDisplayedIndex).getWrongAnswer2());
         ((Button) findViewById(R.id.ans3)).setText(allFlashcards.get(currentCardDisplayedIndex).getAnswer());
