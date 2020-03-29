@@ -7,7 +7,7 @@ Flash card App - Animation and Styling
 
 ### App Walk-though
 
-<img src="https://i.imgur.com/OrBxrpp.gif" width=200><br>
+<img src="https://i.imgur.com/2bHd32S.gif" width=200><br>
 
 
 ## Required
